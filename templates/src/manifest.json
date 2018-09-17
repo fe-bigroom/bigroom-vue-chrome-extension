@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "name": "vue-chrome-extension-boilerplate",
+  "manifest_version": 2,
+  "description": "Example for vue-chrome-extension-boilerplate",
+  "browser_action": {
+    "default_icon": "assets/images/icon.png",
+    "default_title": "default_title",
+    "default_popup": "pages/popup.html"
+  },
+  "background": {
+    "persistent": false,
+    "page": "pages/background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["modules/content/inject.js"],
+      "all_frames": true
+    }
+  ],
+  "permissions": ["http://*/*", "https://*/*"],
+  "content_security_policy": "default-src 'self'; script-src 'self' http://127.0.0.1:3000 http://localhost:3000 'unsafe-eval'; connect-src http://127.0.0.1:7001 http://localhost:7001; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
+}

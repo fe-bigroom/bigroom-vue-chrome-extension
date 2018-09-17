@@ -1,0 +1,33 @@
+{
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "vue"
+  ],
+  "extends": ["plugin:vue/essential", "airbnb-base"],
+  "rules": {
+    "no-console": 0,
+    "semi": 0,
+    "object-curly-newline": 0,
+    "import/prefer-default-export": 0,
+    "import/extensions": ["error", "always", {
+      "js": "never",
+      "vue": "never"
+    }],
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": [
+        "state",
+        "acc",
+        "e"
+      ]
+    }]
+  },
+  "globals": {
+    "chrome": true
+  }
+}
