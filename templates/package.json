@@ -4,7 +4,7 @@
   "description": "vue-chrome-extension",
   "scripts": {
     "start": "bigroom dev",
-    "build": "bigroom build",
+    "build": "NODE_ENV=production bigroom build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -32,6 +32,7 @@
     "webpack-hot-middleware": "^2.23.1"
   },
   "template": {
+    "tag": "2.0.0",
     "type": "chrome-extension",
     "framework": "vue"
   }

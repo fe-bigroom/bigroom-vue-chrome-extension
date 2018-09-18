@@ -13,15 +13,18 @@ module.exports = webpackMerge(baseWebpackConfig, {
     publicPath: `/${publicPath}`
   },
   devServer: {
-    contentBase: './dist/dev',
-    outputPath: path.join(process.cwd(), './dist/dev'),
+    contentBase: './dev',
+    outputPath: path.join(process.cwd(), './dist/'),
     compress: true,
     hot: true
   },
   mode: 'development',
   plugins: [
     new WriteFilePlugin({
-      test: /inject\.js$/,
-    })
+      test: /(inject\.js|manifest\.json)$/,
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 })

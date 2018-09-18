@@ -6,6 +6,5 @@ console.log('content injected done!');
 /* eslint-disable no-new */
 new Vue({
   el: '#chrome-content-root',
-  components: { App },
-  template: '<App/>',
+  render: h => h(App),
 });
