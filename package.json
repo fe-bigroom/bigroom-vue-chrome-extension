@@ -1,0 +1,20 @@
+{
+  "name": "bigroom-vue-chrome-extension",
+  "version": "2.0.0",
+  "description": "bigroom-vue-chrome-extension",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fe-bigroom/bigroom-vue-chrome-extension.git"
+  },
+  "keywords": [
+    "bigroom",
+    "vue",
+    "chrome-extension"
+  ],
+  "author": "lzwai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fe-bigroom/bigroom-vue-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/fe-bigroom/bigroom-vue-chrome-extension#readme"
+}
