@@ -60,21 +60,41 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(config.env),
-        PORT: JSON.stringify(config.port),
-        PUBLIC_PATH: JSON.stringify(config.publicPath)
+        PORT: JSON.stringify(config.port)
       }
     }),
     new CopyWebpackPlugin([ // If you want webpack-dev-server to write files to the output directory during development, you can force it with the write-file-webpack-plugin.
-      {
-        from: './src/modules/content/inject.js',
-        to: resolve(`dist/${env}/modules/content/inject.js`),
-        toType: 'file'
-      },
       {
         from: `./src/manifest.${env}.json`,
         to: resolve(`dist/${env}/manifest.json`),
         toType: 'file'
       }
     ])
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        commons: {
+					chunks: 'initial',
+					minChunks: 2,
+					maxInitialRequests: 5, // The default limit is too small to showcase the effect
+					minSize: 0 // This is example is too small to create commons chunks
+				},
+				vendor: {
+					test: /node_modules/,
+					chunks: 'initial',
+					name: 'vendor',
+					priority: 10,
+					enforce: true
+				}
+      }
+    }
+  }
 }

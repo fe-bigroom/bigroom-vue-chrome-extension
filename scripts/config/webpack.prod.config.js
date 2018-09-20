@@ -5,10 +5,9 @@ const baseWebpackConfig = require('./webpack.base.config')
 
 module.exports = webpackMerge(baseWebpackConfig, {
   output: {
-    filename: '[name]/[name].bundle.js',
+    filename: '[name]/[name].js',
     path: path.resolve('dist/prod/modules')
   },
-  plugins: [
-  ],
-  mode: 'production'
+  mode: 'production',
+  plugins: []
 })
