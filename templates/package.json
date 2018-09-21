@@ -32,7 +32,7 @@
     "webpack-hot-middleware": "^2.23.1"
   },
   "template": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "type": "chrome-extension",
     "framework": "vue"
   }
