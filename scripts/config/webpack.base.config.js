@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const entrys = require('./utils/entrys')
+const entries = require('./utils/entries')
 const config = require('./index')
 
 const resolve = function (dir) {
@@ -12,7 +12,7 @@ const resolve = function (dir) {
 const env = config.env !== 'production' ? 'dev' : 'prod'
 
 module.exports = {
-  entry: entrys,
+  entry: entries,
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

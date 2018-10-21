@@ -10,7 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "webpack-chrome-extension-reloader": "^0.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -32,7 +33,7 @@
     "webpack-hot-middleware": "^2.23.1"
   },
   "template": {
-    "version": "3.1.0",
+    "version": "3.1.1",
     "type": "chrome-extension",
     "framework": "vue"
   }
