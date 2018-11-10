@@ -4,7 +4,7 @@
 
 <template>
   <div class="chrome-content-container">
-    vue chrome extensions
+    chrome extensions with vuejs
   </div>
 </template>
 

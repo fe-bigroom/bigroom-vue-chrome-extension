@@ -1,7 +1,7 @@
 const express = require('express')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
-// const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackChromeExtensionsReloadMiddleware = require('../config/middlewares/webpack-chrome-extensions-reload-middleware')
 
 const { port, host } = require('../config')
 const webpackConfig = require('../config/webpack.dev.config')
@@ -17,7 +17,10 @@ module.exports = function server() {
   // Tell express to use the webpack-dev-middleware and use the webpack.config.js
   // configuration file as a base.
   app.use(devMiddleware)
-  // app.use(webpackHotMiddleware(compiler
+
+  // auto reload when saveing code
+  app.use('/sse', webpackChromeExtensionsReloadMiddleware(compiler));
+
 
   devMiddleware.waitUntilValid(() => {
     console.log()

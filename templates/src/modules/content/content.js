@@ -1,25 +1,42 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-import { injectRootDom, onMessage, sendMessage } from './util';
+import { injectRootDom, onMessage, sendMessage, onExtensionReload } from './util';
 
-const contentId = 'chrome-content-root';
+const content = {
+  contentId: 'chrome-content-root',
 
-onMessage(({ action, data }, sender, response) => { // eslint-disable-line
-  switch (action) {
-    case 'init':
-      window.chromeContentConfig = Object.assign({}, data);
-      break;
+  run() {
+    this.listen();
+    sendMessage('init');
+    injectRootDom(this.contentId);
 
-    default: break;
-  }
-});
+    this.render();
+  },
 
-sendMessage('init');
-injectRootDom(contentId);
+  listen() {
+    onMessage(({ action, data }, sender, response) => { // eslint-disable-line
+      switch (action) {
+        case 'init':
+          window.chromeContentConfig = Object.assign({}, data);
+          break;
+        // todo
+        default: break;
+      }
+    });
 
-/* eslint-disable no-new */
-new Vue({
-  el: `#${contentId}`,
-  render: h => h(App),
-});
+    // auto reload extension when save
+    if (process.env.NODE_ENV !== 'production') {
+      onExtensionReload(process.env.PORT);
+    }
+  },
+  render() {
+    /* eslint-disable no-new */
+    new Vue({
+      el: `#${this.contentId}`,
+      render: h => h(App),
+    });
+  },
+}
+
+content.run();

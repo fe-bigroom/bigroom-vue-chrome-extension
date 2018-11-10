@@ -1,6 +1,6 @@
 {
   "name": "vue-chrome-extension-scripts",
-  "version": "3.1.1",
+  "version": "4.0.0",
   "description": "vue-chrome-extension-scripts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,8 +17,8 @@
     "klaw-sync": "^5.0.0",
     "ora": "^3.0.0",
     "rimraf": "^2.6.2",
+    "ssestream": "^1.0.1",
     "webpack": "^4.19.0",
-    "webpack-chrome-extension-reloader": "^0.8.3",
     "webpack-dev-middleware": "^3.3.0",
     "webpack-hot-middleware": "^2.24.0",
     "webpack-merge": "^4.1.4",
